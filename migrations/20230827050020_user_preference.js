@@ -4,10 +4,10 @@
  */
 exports.up = function(knex) {
     return knex.schema
-    .createTable("friend", (table) => {
+    .createTable("user_preference", (table) => {
         table.increments("id").primary();
         table.integer("user_id").unsigned().notNullable();
-        table.integer("user2_id").unsigned().notNullable();
+        table.integer("preference_id").unsigned().notNullable();
         table
             .foreign("user_id")
             .references("id")
@@ -15,9 +15,9 @@ exports.up = function(knex) {
             .onUpdate("CASCADE")
             .onDelete("CASCADE")
         table
-            .foreign("user2_id")
+            .foreign("preference_id")
             .references("id")
-            .inTable("user")
+            .inTable("preference")
             .onUpdate("CASCADE")
             .onDelete("CASCADE")
         table.timestamp("created_at").defaultTo(knex.fn.now());
@@ -32,5 +32,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTable("friend");
+    return knex.schema.dropTable("user_preference");
 };
