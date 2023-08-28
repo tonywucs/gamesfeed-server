@@ -6,10 +6,10 @@ exports.up = function(knex) {
     return knex.schema
     .createTable("friend", (table) => {
         table.increments("id").primary();
-        table.integer("user_id").unsigned().notNullable();
+        table.integer("user1_id").unsigned().notNullable();
         table.integer("user2_id").unsigned().notNullable();
         table
-            .foreign("user_id")
+            .foreign("user1_id")
             .references("id")
             .inTable("user")
             .onUpdate("CASCADE")

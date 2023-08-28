@@ -9,9 +9,10 @@ exports.up = function(knex) {
         table.string("title").notNullable();
         table.string("author").notNullable();
         table.string("source").notNullable();
-        table.string("description").notNullable();
+        table.string("description", 512).notNullable();
         table.string("url").notNullable();
         table.string("url_to_image").notNullable();
+        table.string("published_at").notNullable();
         table.timestamp("created_at").defaultTo(knex.fn.now());
         table
             .timestamp("updated_at")
