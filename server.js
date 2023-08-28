@@ -12,14 +12,14 @@ app.use(cors({
 app.use(express.json());
 
 const userRoutes = require('./routes/user');
-// const newsRoutes = require('./routes/news');
+const newsRoutes = require('./routes/news');
 
 app.get('/', ( _req, res) => {
   res.send('Welcome to my API');
 });
 
-app.use('/users', userRoutes);
-// app.use('/news', newsRoutes);
+app.use('/user', userRoutes);
+app.use('/news', newsRoutes);
 
 
 

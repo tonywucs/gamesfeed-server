@@ -10,7 +10,7 @@ const getNewsData = async (pref, pageSize) => {
         const { data } = await 
         axios.get(`${API_URL}?q=${pref}&language=en&pageSize=${pageSize}&apiKey=${API_KEY}`);
     
-    return data;
+        return data;
     } catch (err) {
         console.error(err);
     }

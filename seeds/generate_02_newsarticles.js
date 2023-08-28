@@ -10,7 +10,7 @@ const processNews = (news) => {
         source: article.source.name,
         author: article.author ? article.author : article.source.name,
         title: article.title,
-        description: article.description,
+        description: article.description ? article.description : article.content.split('.')[0],
         url: article.url,
         url_to_image: article.urlToImage,
         published_at: article.publishedAt
