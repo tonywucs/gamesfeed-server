@@ -86,7 +86,39 @@ exports.login = async (req, res) => {
   }
 }
 
-exports.createPref = async (req, res) => {
+exports.delUser = async (req, res) => {
+  const userId = req.jwtDecoded.id;
+
+  try {
+
+    const hasDeleted = await knex('user')
+      .where({ id: userId })
+      .del()
+    
+    if (hasDeleted.length === 0) {
+      return res
+        .status(403)
+        .json({
+          success: false,
+          message: 'No user was found to delete'
+        });
+    }
+
+    res
+        .status(204)
+        .send()
+
+  } catch (err) {
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: 'No user was found'
+      });
+  }
+}
+
+exports.setPref = async (req, res) => {
   const userId = req.jwtDecoded.id;
   const selectedPrefs = req.body.preferences;
 
@@ -200,7 +232,7 @@ exports.getPref = async (req, res) => {
   }
 }
 
-exports.createFriends = async (req, res) => {
+exports.setFriends = async (req, res) => {
   const userId = req.jwtDecoded.id;
   const friendUsername = req.body.username;
 
