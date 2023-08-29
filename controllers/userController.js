@@ -73,7 +73,7 @@ exports.login = async (req, res) => {
       loginTime: Date.now()
     },
       process.env.JWT_SECRET,
-      { expiresIn: '5m' }
+      { expiresIn: '20m' }
     );
 
     res.status(200).json({ token });
@@ -86,32 +86,77 @@ exports.login = async (req, res) => {
   }
 }
 
-//body {preferences: ["Pokemon", "Zelda"]}
-
 exports.createPref = async (req, res) => {
   const userId = req.jwtDecoded.id;
   const selectedPrefs = req.body.preferences;
 
-  console.log(selectedPrefs);
-
   try {
-    const prefs = await knex("preference")
-      .select("id")
-      .whereIn('name', selectedPrefs);
 
-    console.log(prefs);
+    const userPrefs = await knex("user_preference")
+      .join("preference", "preference_id", "=", "preference.id")
+      .select("preference_id", "name")
+      .where({ user_id: userId })
+    
+    const prefList = await knex("preference")
+      .whereIn('name', selectedPrefs)
 
-    await knex("user_preference")
-      .insert(prefs.map((pref) => {
-        return {
-          user_id: userId,
-          preference_id: pref.id
-        }
-      }));
+    if (userPrefs.length === 0) {
+      await knex("user_preference")
+        .insert(prefList.map((pref) => {
+          return {
+            user_id: userId,
+            preference_id: pref.id
+          }
+        }));
+      }
+
+    const userPrefsArr = userPrefs.map((pref) => pref.name)
+
+    const delPrefs = userPrefsArr
+      .filter((pref) => !selectedPrefs.includes(pref))
+
+    const addPrefs = selectedPrefs
+      .filter((pref) => !userPrefsArr.includes(pref))
+    
+    if (delPrefs.length > 0) {
+      delList = userPrefs.filter((pref) => {
+        return delPrefs.includes(pref.name)
+      })
+
+      delList.forEach(async (pref) => {
+        await knex('user_preference')
+          .where({ user_id: userId })
+          .andWhere({ preference_id: pref.preference_id})
+          .del()
+      })
+    }
+
+    if (addPrefs.length > 0) {
+      addList = prefList.filter((pref) => {
+        return addPrefs.includes(pref.name)
+      })
+
+      await knex("user_preference")
+        .insert(prefList.map((pref) => {
+          return {
+            user_id: userId,
+            preference_id: pref.id
+          }
+        }));
+      
+        return res
+          .status(200)
+          .json({
+            success: true,
+            message: 'User preferences updated'
+          });
+    }
+
 
     res
       .status(200)
-      .json({ preferences: prefs });
+      .json({ message: "User preferences updated" });
+
   } catch (err) {
 
     res
@@ -153,21 +198,93 @@ exports.getPref = async (req, res) => {
       message: 'No user was found with preferences'
     });
   }
-
-
-
 }
 
-exports.setPref = async (req, res) => {
+exports.createFriends = async (req, res) => {
+  const userId = req.jwtDecoded.id;
+  const friendUsername = req.body.username;
 
+  try {
+
+    const friendId = await knex('user')
+      .select('id')
+      .where({ username: friendUsername })
+
+
+    if (friendId.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'No user was found'
+      });
+    }
+
+    const hasFriend = await knex('friend')
+      .where({ user1_id: userId })
+
+    if (hasFriend.length === 0) {
+      await knex('friend')
+        .insert({
+          user1_id: userId,
+          user2_id: friendId
+        })
+
+      return res.status(200).json({
+        success: true,
+        message: 'Friend of was added'
+      });
+    }
+
+    const isFriend = hasFriend.find((friend) => {
+      return friend.user2_id === friendId
+    })
+
+    if (isFriend) {
+      return res.status(400).json({
+        success: false,
+        message: 'Friend already exists'
+      });
+    }
+
+    await knex('friend')
+      .insert([{
+        user1_id: userId,
+        user2_id: friendId[0].id
+      }])
+
+    res
+      .status(200)
+      .json({
+        friend_username: friendUsername
+      })
+
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: 'No user was found with friends'
+    });
+  }
 }
 
 exports.getFriends = async (req, res) => {
+  const userId = req.jwtDecoded.id;
 
+  try {
+
+    const friends = await knex('friend')
+      .join('user', 'user2_id', '=', 'user.id')
+      .select('username')
+      .where({ user1_id: userId })
+
+    res
+      .status(200)
+      .json({
+        friends: friends
+      })
+
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      message: 'No user was found with friends'
+    });
+  }
 }
-
-exports.setFriends = async (req, res) => {
-
-}
-
-

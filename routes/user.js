@@ -6,8 +6,12 @@ const authorizeMiddleware = require('../middleware/authorize');
 
 router.route('/signup').post(userController.signUp);
 router.route('/login').post(userController.login);
-router.route('/prefs').get(authorizeMiddleware.authorize, userController.getPref);
-router.route('/prefs').post(authorizeMiddleware.authorize, userController.createPref);
+router.route('/prefs')
+    .get(authorizeMiddleware.authorize, userController.getPref)
+    .post(authorizeMiddleware.authorize, userController.createPref);
+router.route('/friends')
+    .get(authorizeMiddleware.authorize, userController.getFriends)
+    .post(authorizeMiddleware.authorize, userController.createFriends);
 
 
 module.exports = router;
