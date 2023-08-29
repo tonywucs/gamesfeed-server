@@ -2,7 +2,6 @@ const knex = require('knex')(require('../knexfile'));
 const jwt = require('jsonwebtoken');
 
 exports.signUp = async (req, res) => {
-
   const { username, password } = req.body;
 
   if (!(username && password)) {
@@ -49,7 +48,6 @@ exports.signUp = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
-
   const { username, password } = req.body;
 
   const user = await knex('user')
@@ -90,11 +88,10 @@ exports.delUser = async (req, res) => {
   const userId = req.jwtDecoded.id;
 
   try {
-
     const hasDeleted = await knex('user')
       .where({ id: userId })
       .del()
-    
+
     if (hasDeleted.length === 0) {
       return res
         .status(403)
@@ -105,8 +102,8 @@ exports.delUser = async (req, res) => {
     }
 
     res
-        .status(204)
-        .send()
+      .status(204)
+      .send()
 
   } catch (err) {
     res
@@ -123,12 +120,11 @@ exports.setPref = async (req, res) => {
   const selectedPrefs = req.body.preferences;
 
   try {
-
     const userPrefs = await knex("user_preference")
       .join("preference", "preference_id", "=", "preference.id")
       .select("preference_id", "name")
       .where({ user_id: userId })
-    
+
     const prefList = await knex("preference")
       .whereIn('name', selectedPrefs)
 
@@ -140,7 +136,7 @@ exports.setPref = async (req, res) => {
             preference_id: pref.id
           }
         }));
-      }
+    }
 
     const userPrefsArr = userPrefs.map((pref) => pref.name)
 
@@ -149,7 +145,7 @@ exports.setPref = async (req, res) => {
 
     const addPrefs = selectedPrefs
       .filter((pref) => !userPrefsArr.includes(pref))
-    
+
     if (delPrefs.length > 0) {
       delList = userPrefs.filter((pref) => {
         return delPrefs.includes(pref.name)
@@ -158,7 +154,7 @@ exports.setPref = async (req, res) => {
       delList.forEach(async (pref) => {
         await knex('user_preference')
           .where({ user_id: userId })
-          .andWhere({ preference_id: pref.preference_id})
+          .andWhere({ preference_id: pref.preference_id })
           .del()
       })
     }
@@ -175,15 +171,14 @@ exports.setPref = async (req, res) => {
             preference_id: pref.id
           }
         }));
-      
-        return res
-          .status(200)
-          .json({
-            success: true,
-            message: 'User preferences updated'
-          });
-    }
 
+      return res
+        .status(200)
+        .json({
+          success: true,
+          message: 'User preferences updated'
+        });
+    }
 
     res
       .status(200)
@@ -204,31 +199,38 @@ exports.getPref = async (req, res) => {
   const userId = req.jwtDecoded.id;
 
   try {
+    // Find all preferences of the user
     const userPrefs = await knex("user_preference")
       .join("preference", "preference_id", "=", "preference.id")
       .select("user_id", "name")
       .where({ user_id: userId })
 
     if (userPrefs.length === 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'No user preferences were set'
-      });
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: 'No user preferences were set'
+        });
     }
 
     const prefs = userPrefs.map((user) => {
       return user.name;
     })
 
-    res.status(200).json({
-      preferences: prefs
-    });
+    res
+      .status(200)
+      .json({
+        preferences: prefs
+      });
 
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: 'No user was found with preferences'
-    });
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: 'No user was found with preferences'
+      });
   }
 }
 
@@ -237,19 +239,22 @@ exports.setFriends = async (req, res) => {
   const friendUsername = req.body.username;
 
   try {
-
+    // Determine the existence of a friend
     const friendId = await knex('user')
       .select('id')
       .where({ username: friendUsername })
 
 
     if (friendId.length === 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'No user was found'
-      });
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: 'No user was found'
+        });
     }
 
+    // Determine the if the user already has this friend
     const hasFriend = await knex('friend')
       .where({ user1_id: userId })
 
@@ -260,10 +265,12 @@ exports.setFriends = async (req, res) => {
           user2_id: friendId
         })
 
-      return res.status(200).json({
-        success: true,
-        message: 'Friend of was added'
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          message: 'Friend of was added'
+        });
     }
 
     const isFriend = hasFriend.find((friend) => {
@@ -290,10 +297,12 @@ exports.setFriends = async (req, res) => {
       })
 
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: 'No user was found with friends'
-    });
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: 'No user was found with friends'
+      });
   }
 }
 
@@ -301,7 +310,7 @@ exports.getFriends = async (req, res) => {
   const userId = req.jwtDecoded.id;
 
   try {
-
+    // Determine the existence of a friend
     const friends = await knex('friend')
       .join('user', 'user2_id', '=', 'user.id')
       .select('username')
@@ -314,9 +323,88 @@ exports.getFriends = async (req, res) => {
       })
 
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: 'No user was found with friends'
-    });
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: 'No user was found with friends'
+      });
+  }
+}
+
+exports.setUserRecommended = async (req, res) => {
+  const userId = req.jwtDecoded.id;
+  const { newsarticle_id } = req.body;
+
+  try {
+    const newsArticleList = await knex('recommend')
+      .select('newsarticle_id')
+      .where({ user_id: userId })
+
+    const newsArticleListIds = await Promise.all(newsArticleList.map(async (article) => {
+      return article.newsarticle_id
+    }))
+
+    if (newsArticleListIds.includes(Number(newsarticle_id))) {
+      await knex('recommend')
+        .where({ user_id: userId })
+        .andWhere({ newsarticle_id: newsarticle_id })
+        .del()
+
+      return res
+        .status(204)
+        .send()
+    }
+
+    await knex('recommend')
+      .insert([
+        { user_id: userId, newsarticle_id: newsarticle_id }
+      ])
+
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: 'Successfully recommended!'
+      })
+
+  } catch (err) {
+    res
+      .status(400)
+      .json({
+        success: true,
+        message: 'No recommendations set'
+      })
+  }
+}
+
+exports.getUserRecommended = async (req, res) => {
+  const userId = req.jwtDecoded.id;
+
+  try {
+    const newsArticleList = await knex('recommend')
+      .select('newsarticle_id')
+      .where({ user_id: userId })
+
+    const newsArticleListIds = await Promise.all(newsArticleList.map(async (article) => {
+      return article.newsarticle_id
+    }))
+
+    const newsArticles = await knex('newsarticle')
+      .whereIn('id', newsArticleListIds)
+
+    res
+      .status(200)
+      .json({
+        articles: newsArticles
+      })
+
+  } catch (err) {
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: "No news articles recommended"
+      })
   }
 }

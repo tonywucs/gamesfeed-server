@@ -13,6 +13,9 @@ router.route('/prefs')
 router.route('/friends')
     .get(authorizeMiddleware.authorize, userController.getFriends)
     .post(authorizeMiddleware.authorize, userController.setFriends);
+router.route('/recommend')
+    .get(authorizeMiddleware.authorize, userController.getUserRecommended)
+    .post(authorizeMiddleware.authorize, userController.setUserRecommended)
 
 
 module.exports = router;
