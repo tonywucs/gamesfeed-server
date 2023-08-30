@@ -5,7 +5,7 @@ const knex = require('knex')(require('../knexfile'));
 // to select a number of articles
 exports.getNews = async (req, res) => {
   const userId = req.jwtDecoded.id;
-  const { num_of_articles, preference } = req.body;
+  const { num_of_articles, preference } = req.headers;
 
   try {
     // Determine existence of a preference and select its id
