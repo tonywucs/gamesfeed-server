@@ -237,7 +237,7 @@ exports.getPref = async (req, res) => {
   }
 }
 
-exports.getAllPref = async (req, res) => {
+exports.getAllPref = async (_req, res) => {
   try {
     const preferences = await knex('preference')
       .select("*")

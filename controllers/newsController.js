@@ -27,11 +27,13 @@ exports.getNews = async (req, res) => {
         });
     }
 
+    // Gets all preferences of a user
     const userPrefs = await knex("user_preference")
       .join("preference", "preference_id", "=", "preference.id")
       .select("preference.id", "name")
       .where({ user_id: userId })
 
+      //Gets all news articles ids that match the preference(s)
     const newsArticleList = preference ?
       (
         {
@@ -89,13 +91,15 @@ exports.getNews = async (req, res) => {
 
           return {
             preference: pref.preference,
-            articles: newsArticlesByPref
+            articles: newsArticlesByPref,
+            results: newsArticlesByPref.length
           }
         }))
       )
 
     res.status(200).json({
-      articles: newsArticles
+      articles: newsArticles,
+      total_results: newsArticles.map((article) => article.results).reduce((acc, curr) => acc + curr, 0)
     });
 
   } catch (err) {
