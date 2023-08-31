@@ -202,7 +202,7 @@ exports.getPref = async (req, res) => {
     // Find all preferences of the user
     const userPrefs = await knex("user_preference")
       .join("preference", "preference_id", "=", "preference.id")
-      .select("user_id", "name")
+      .select("preference_id", "name")
       .where({ user_id: userId })
 
     if (userPrefs.length === 0) {
@@ -214,8 +214,11 @@ exports.getPref = async (req, res) => {
         });
     }
 
-    const prefs = userPrefs.map((user) => {
-      return user.name;
+    const prefs = userPrefs.map((userPref) => {
+      return {
+        id: userPref.preference_id,
+        name: userPref.name
+      }
     })
 
     res
@@ -231,6 +234,35 @@ exports.getPref = async (req, res) => {
         success: false,
         message: 'No user was found with preferences'
       });
+  }
+}
+
+exports.getAllPref = async (req, res) => {
+  try {
+    const preferences = await knex('preference')
+      .select("*")
+
+    if (preferences.length === 0) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "No preferences found"
+        })
+    }
+
+    res
+      .status(200)
+      .json({
+        preferences: preferences
+      })
+  } catch (err) {
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: "No preferences in the database"
+      })
   }
 }
 

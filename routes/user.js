@@ -10,6 +10,8 @@ router.route('/').delete(authorizeMiddleware.authorize, userController.delUser)
 router.route('/prefs')
     .get(authorizeMiddleware.authorize, userController.getPref)
     .post(authorizeMiddleware.authorize, userController.setPref);
+router.route('/allprefs')
+    .get(authorizeMiddleware.authorize, userController.getAllPref)
 router.route('/friends')
     .get(authorizeMiddleware.authorize, userController.getFriends)
     .post(authorizeMiddleware.authorize, userController.setFriends);
