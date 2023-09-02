@@ -61,7 +61,9 @@ exports.getRecommendNews = async (req, res) => {
       .join('user', 'user2_id', '=', 'user.id')
       .join('recommend', 'user2_id', '=', 'recommend.user_id')
       .join('newsarticle', 'recommend.newsarticle_id', '=', 'newsarticle.id')
-      .select('username as friend', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
+      .join('newsarticle_preference', 'newsarticle.id', '=', 'newsarticle_preference.newsarticle_id')
+      .join('preference', 'preference.id', '=', 'newsarticle_preference.preference_id')
+      .select('newsarticle_preference.preference_id as pref_id', 'preference.name as preference', 'username as friend', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
       .whereIn('user1_id', [userId])
       .orderBy(sort_by || 'username', sort_type || 'asc');
 
@@ -90,6 +92,7 @@ exports.getRecommendNews = async (req, res) => {
       });
 
   } catch (err) {
+    console.log(err)
     res
       .status(400)
       .json({
@@ -100,13 +103,38 @@ exports.getRecommendNews = async (req, res) => {
 };
 
 exports.getUnauthenticatedNews = async (req, res) => {
-  const { num_of_articles } = req.body
+  const { num_of_articles, sort_by, sort_type, page_number } = req.headers;
+  const numOfResults = {};
 
   try {
-    const newsArticles = await knex('newsarticle')
-      .select("*")
-      .orderBy('published_at', 'desc')
+
+    const newsArticles = await knex('newsarticle_preference')
+      .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
+      .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
+      .orderBy(sort_by || 'published_at', sort_type || 'desc')
       .limit(num_of_articles || 10)
+      .offset(page_number * num_of_articles || 0);
+
+    newsArticles.forEach((article) => {
+      if (!numOfResults[`${article.preference}`]) {
+        numOfResults[`${article.preference}`] = 1
+      } else {
+        numOfResults[`${article.preference}`] += 1
+      }
+    });
+
+    res
+      .status(200)
+      .json({
+        total_results: Object.values(numOfResults).reduce((acc, curr) => acc + curr),
+        results: numOfResults,
+        articles: newsArticles
+      });
+
+    // const newsArticles = await knex('newsarticle')
+    //   .select("*")
+    //   .orderBy('published_at', 'desc')
+    //   .limit(num_of_articles || 10)
 
     res
       .status(200)
