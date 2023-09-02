@@ -1,106 +1,44 @@
 const knex = require('knex')(require('../knexfile'));
 
-// Gets news associated with a user.
-// Take in num_of_articles int and preference string
-// to select a number of articles
 exports.getNews = async (req, res) => {
   const userId = req.jwtDecoded.id;
-  const { num_of_articles, preference } = req.headers;
+  const { num_of_articles, preferences, sort_by, sort_type, page_number } = req.headers;
+  const numOfResults = {};
 
   try {
-    // Determine existence of a preference and select its id
-    const prefId = preference ?
-      (
-        await knex('preference')
-          .select('id')
-          .where({ name: preference })
-      )
-      :
-      ([null])
+    // Join news_pref and user_pref tables to get a list of news_id's and their associated user_id.
+    // Then join the user_pref with preference tables to set each record with a name.
+    // Then join news_pref with newsarticle tables to obtain the associated news article information.
+    //
+    // Two where conditions set in place to filter by user_id and preferences required by the user.
+    // Sort by user choice, by default, news article publish date ordered by most recent
+    // Pagination is available as well with limit() and offset() methods
+    const newsArticles = await knex('newsarticle_preference')
+      .join('user_preference', 'newsarticle_preference.preference_id', '=', 'user_preference.preference_id')
+      .join('preference', 'preference.id', '=', 'user_preference.preference_id')
+      .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
+      .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
+      .whereIn("user_id", [userId])
+      .whereIn("name", preferences.split(" "))
+      .orderBy(sort_by || 'published_at', sort_type || 'desc')
+      .limit(num_of_articles || 10)
+      .offset(page_number * num_of_articles || 0);
 
-    if (prefId.length === 0) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "No preference was found"
-        });
-    }
-
-    // Gets all preferences of a user
-    const userPrefs = await knex("user_preference")
-      .join("preference", "preference_id", "=", "preference.id")
-      .select("preference.id", "name")
-      .where({ user_id: userId })
-
-      //Gets all news articles ids that match the preference(s)
-    const newsArticleList = preference ?
-      (
-        {
-          preferece: preference,
-          articles: await knex('newsarticle_preference')
-            .join('user_preference', 'newsarticle_preference.preference_id', '=', 'user_preference.preference_id')
-            .select('newsarticle_id')
-            .where({ user_id: userId })
-            .andWhere('newsarticle_preference.preference_id', prefId[0].id)
-            .limit(num_of_articles || 10)
-        }
-      )
-      :
-      (
-        await Promise.all(userPrefs.map(async (pref) => {
-          const newsArticleSet = await knex('newsarticle_preference')
-            .join('user_preference', 'newsarticle_preference.preference_id', '=', 'user_preference.preference_id')
-            .select('newsarticle_id')
-            .where({ user_id: userId })
-            .andWhere('newsarticle_preference.preference_id', pref.id)
-            .limit(num_of_articles || 10)
-
-          return {
-            preference: pref.name,
-            articles: newsArticleSet
-          }
-        }))
-      )
-
-    if (preference && (newsArticleList.articles === 0)) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "No news articles found with that those preference"
-        });
-    }
-
-    const newsArticles = preference ?
-      (
-        await knex('newsarticle')
-          .whereIn('id', newsArticleList.articles.map((article) => {
-            return article.newsarticle_id
-          }))
-      )
-      :
-      (
-        await Promise.all(newsArticleList.map(async (pref) => {
-          const newsArticleIds = pref.articles.map((article) => {
-            return article.newsarticle_id
-          })
-
-          const newsArticlesByPref = await knex('newsarticle')
-            .whereIn('id', newsArticleIds);
-
-          return {
-            preference: pref.preference,
-            articles: newsArticlesByPref,
-            results: newsArticlesByPref.length
-          }
-        }))
-      )
-
-    res.status(200).json({
-      articles: newsArticles,
-      total_results: newsArticles.map((article) => article.results).reduce((acc, curr) => acc + curr, 0)
+    newsArticles.forEach((article) => {
+      if (!numOfResults[`${article.preference}`]) {
+        numOfResults[`${article.preference}`] = 1
+      } else {
+        numOfResults[`${article.preference}`] += 1
+      }
     });
+
+    res
+      .status(200)
+      .json({
+        total_results: Object.values(numOfResults).reduce((acc, curr) => acc + curr),
+        results: numOfResults,
+        articles: newsArticles
+      });
 
   } catch (err) {
     res
