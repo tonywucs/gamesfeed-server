@@ -92,7 +92,6 @@ exports.getRecommendNews = async (req, res) => {
       });
 
   } catch (err) {
-    console.log(err)
     res
       .status(400)
       .json({
@@ -107,9 +106,10 @@ exports.getUnauthenticatedNews = async (req, res) => {
   const numOfResults = {};
 
   try {
-
+    // Similar to getNews, responds with general news articles
     const newsArticles = await knex('newsarticle_preference')
       .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
+      .join('preference', 'preference.id', '=', 'preference_id')
       .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
       .orderBy(sort_by || 'published_at', sort_type || 'desc')
       .limit(num_of_articles || 10)
@@ -131,19 +131,7 @@ exports.getUnauthenticatedNews = async (req, res) => {
         articles: newsArticles
       });
 
-    // const newsArticles = await knex('newsarticle')
-    //   .select("*")
-    //   .orderBy('published_at', 'desc')
-    //   .limit(num_of_articles || 10)
-
-    res
-      .status(200)
-      .json({
-        articles: newsArticles
-      })
-
   } catch (err) {
-    console.log(err)
     res
       .status(400)
       .json({
