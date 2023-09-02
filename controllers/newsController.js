@@ -52,55 +52,42 @@ exports.getNews = async (req, res) => {
 
 exports.getRecommendNews = async (req, res) => {
   const userId = req.jwtDecoded.id;
+  const { num_of_articles, sort_by, sort_type, page_number } = req.headers;
+  const numOfResults = {};
 
   try {
-    // Determine the existence of friends and select their ids
-    const friends = await knex('friend')
+    // Similar to getNews, but by default display all recommended news articles
+    let query = knex('friend')
       .join('user', 'user2_id', '=', 'user.id')
-      .select('user.id', 'username')
-      .where({ user1_id: userId })
+      .join('recommend', 'user2_id', '=', 'recommend.user_id')
+      .join('newsarticle', 'recommend.newsarticle_id', '=', 'newsarticle.id')
+      .select('username as friend', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
+      .whereIn('user1_id', [userId])
+      .orderBy(sort_by || 'username', sort_type || 'asc');
 
-    if (friends.length === 0) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: 'No friends were found'
-        })
+    if (num_of_articles) {
+      query = query
+        .limit(num_of_articles)
+        .offset(page_number * num_of_articles);
     }
 
-    // Find all recommended newsarticle ids for each friend
-    const recommendedList = await Promise.all(friends.map(async (friend) => {
-      const recommended = await knex('recommend')
-        .select('newsarticle_id')
-        .where({ user_id: friend.id })
+    const newsArticles = await query;
 
-      return {
-        username: friend.username,
-        articles: recommended,
+    newsArticles.forEach((article) => {
+      if (!numOfResults[`${article.friend}`]) {
+        numOfResults[`${article.friend}`] = 1
+      } else {
+        numOfResults[`${article.friend}`] += 1
       }
-    }))
-
-    // Find all newsarticles from the recommended list
-    const newsArticles = await Promise.all(recommendedList.map(async (friend) => {
-      const newsArticlesList = friend.articles.map((article) => {
-        return article.newsarticle_id
-      })
-
-      const recommendedNewsArticles = await knex('newsarticle')
-        .whereIn('id', newsArticlesList)
-
-      return {
-        username: friend.username,
-        articles: recommendedNewsArticles
-      }
-    }))
+    });
 
     res
       .status(200)
       .json({
-        recommended_articles: newsArticles
-      })
+        total_results: Object.values(numOfResults).reduce((acc, curr) => acc + curr),
+        results: numOfResults,
+        articles: newsArticles
+      });
 
   } catch (err) {
     res
@@ -108,9 +95,9 @@ exports.getRecommendNews = async (req, res) => {
       .json({
         success: false,
         message: 'No friend recommendations found'
-      })
+      });
   }
-}
+};
 
 exports.getUnauthenticatedNews = async (req, res) => {
   const { num_of_articles } = req.body
