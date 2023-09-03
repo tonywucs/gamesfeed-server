@@ -137,6 +137,6 @@ exports.getUnauthenticatedNews = async (req, res) => {
       .json({
         success: false,
         message: 'No new articles found'
-      })
+      });
   }
 }

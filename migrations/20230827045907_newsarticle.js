@@ -10,6 +10,7 @@ exports.up = function(knex) {
         table.string("author").notNullable();
         table.string("source").notNullable();
         table.string("description", 512).notNullable();
+        table.integer("read_time").notNullable();
         table.string("url").notNullable();
         table.string("url_to_image").notNullable();
         table.string("published_at").notNullable();

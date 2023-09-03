@@ -5,11 +5,12 @@ const axios = require('axios');
 const API_URL = process.env.NEWS_API_URL;
 const API_KEY = process.env.NEWS_API_KEY;
 
-const getNewsData = async (pref, pageSize) => {
+const getNewsData = async (pref, pageSize, sortBy) => {
+
     try {
         const { data } = await 
-        axios.get(`${API_URL}?q=${pref}&language=en&pageSize=${pageSize}&apiKey=${API_KEY}`);
-    
+        axios.get(`${API_URL}?q=${pref}&language=en&pageSize=${pageSize}&sortBy=${sortBy}&apiKey=${API_KEY}`);
+        
         return data;
     } catch (err) {
         console.error(err);

@@ -1,16 +1,29 @@
-const newsArticles  = require('../seed-data/newsarticles')
+const knex = require('knex')(require('../knexfile'));
+const newsArticles = require('../seed-data/newsarticles');
 
 const processNews = (news) => {
+  const numOfChars = 200;
+  const cpm = 1000; // average human reads 200 wpm, with an average word length of 5 characters
+  let readingTime = 0;
+
   const filteredNews = news.articles
     .filter((article) => {
-      return article.urlToImage
+      return article.urlToImage && (article.content.split('[+').length === 2)
     })
     .map((article) => {
+      if (article.content) {
+        const content = article.content.split('[+');
+        const contentBriefCount = content[0].split('').length;
+        const contentCharCount = Number(content[1].split(' ')[0]);
+        readingTime = Math.floor((contentBriefCount + contentCharCount) / cpm);
+      }
+
       return {
         source: article.source.name,
         author: article.author ? article.author : article.source.name,
         title: article.title,
-        description: article.description ? article.description : article.content.split('.')[0],
+        description: article.description ? article.description : article.content.substring(0, numOfChars),
+        read_time: readingTime || -1,
         url: article.url,
         url_to_image: article.urlToImage,
         published_at: article.publishedAt
@@ -20,47 +33,35 @@ const processNews = (news) => {
   return filteredNews;
 }
 
+const populateNewsPreferences = async (preference, pageSize, sortBy) => {
+  try {
+    const news = await newsArticles.getNewsData(preference.name.toLowerCase(), pageSize, sortBy);
+    const count = await knex('newsarticle').count("* as total_count")
+    await knex('newsarticle').insert(processNews(news))
+    const newsArticleList = await knex('newsarticle').select("id").offset(count[0].total_count || 0)
+
+    for (const article of newsArticleList) {
+      await knex('newsarticle_preference').insert([
+        { newsarticle_id: article.id, preference_id: preference.id }])
+    }
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 
  */
-exports.seed = async function(knex) {
-  // Deletes ALL existing entries
+exports.seed = async function (knex) {
   await knex('newsarticle').del();
 
-  let records = []
-  let articleNum = []
-  const preferenceOptions = await knex('preference').select("*")
-  const pokemonNews = await newsArticles.getNewsData(preferenceOptions[0].name.toLowerCase(), 20);
-  const zeldaNews = await newsArticles.getNewsData(preferenceOptions[1].name.toLowerCase(), 20)
-  const marioNews = await newsArticles.getNewsData(preferenceOptions[2].name.toLowerCase(), 20)
-  
-  await knex('newsarticle').insert(processNews(pokemonNews));
+  const pageSize = 50;
+  const sortBy = 'relevancy';
+  const preferenceOptions = await knex('preference').select("*");
 
-  records = await knex('newsarticle').select("id")
-  await Promise.all(records.map(async (record) => {
-    await knex('newsarticle_preference').insert([
-      { newsarticle_id: record.id, preference_id: preferenceOptions[0].id }
-    ]);
-  }))
-
-  await knex('newsarticle').insert(processNews(zeldaNews));
-    
-  articleNum = await knex('newsarticle_preference').select("id")
-  records = await knex('newsarticle').select("id").where('id', '>', `${articleNum.length}`)
-  await Promise.all(records.map(async (record) => {
-    await knex('newsarticle_preference').insert([
-      { newsarticle_id: record.id, preference_id: preferenceOptions[1].id }
-    ]);
-  }))
-
-  await knex('newsarticle').insert(processNews(marioNews));
-
-  articleNum = await knex('newsarticle_preference').select("id")
-  records = await knex('newsarticle').select("id").where('id', '>', `${articleNum.length}`)
-  await Promise.all(records.map(async (record) => {
-    await knex('newsarticle_preference').insert(
-      { newsarticle_id: record.id, preference_id: preferenceOptions[2].id }
-    );
-  }))
+  for (const pref of preferenceOptions) {
+    await populateNewsPreferences(pref, pageSize, sortBy)
+  }
 };
