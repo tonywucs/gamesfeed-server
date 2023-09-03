@@ -125,12 +125,12 @@ exports.setPref = async (req, res) => {
       .select("preference_id", "name")
       .where({ user_id: userId })
 
-    const prefList = await knex("preference")
+    const selectedPrefsList = await knex("preference")
       .whereIn('name', selectedPrefs)
 
     if (userPrefs.length === 0) {
       await knex("user_preference")
-        .insert(prefList.map((pref) => {
+        .insert(selectedPrefsList.map((pref) => {
           return {
             user_id: userId,
             preference_id: pref.id
@@ -138,34 +138,22 @@ exports.setPref = async (req, res) => {
         }));
     }
 
-    const userPrefsArr = userPrefs.map((pref) => pref.name)
+    const delPrefs = userPrefs
+      .filter((pref) => !selectedPrefsList.map((pref) => pref.name).includes(pref.name))
 
-    const delPrefs = userPrefsArr
-      .filter((pref) => !selectedPrefs.includes(pref))
-
-    const addPrefs = selectedPrefs
-      .filter((pref) => !userPrefsArr.includes(pref))
+    const addPrefs = selectedPrefsList
+      .filter((pref) => !userPrefs.map((pref) => pref.name).includes(pref.name))
 
     if (delPrefs.length > 0) {
-      delList = userPrefs.filter((pref) => {
-        return delPrefs.includes(pref.name)
-      })
-
-      delList.forEach(async (pref) => {
-        await knex('user_preference')
-          .where({ user_id: userId })
-          .andWhere({ preference_id: pref.preference_id })
-          .del()
-      })
+      await knex('user_preference')
+        .whereIn('user_id', [userId])
+        .whereIn('preference_id', delPrefs.map((pref) => pref.preference_id))
+        .del()
     }
 
     if (addPrefs.length > 0) {
-      addList = prefList.filter((pref) => {
-        return addPrefs.includes(pref.name)
-      })
-
       await knex("user_preference")
-        .insert(prefList.map((pref) => {
+        .insert(addPrefs.map((pref) => {
           return {
             user_id: userId,
             preference_id: pref.id
@@ -182,10 +170,9 @@ exports.setPref = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "User preferences updated" });
+      .json({ message: "Preferences Unchanged" });
 
   } catch (err) {
-
     res
       .status(400)
       .json({

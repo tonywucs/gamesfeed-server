@@ -4,6 +4,7 @@ exports.getNews = async (req, res) => {
   const userId = req.jwtDecoded.id;
   const { num_of_articles, preferences, sort_by, sort_type, page_number } = req.headers;
   const numOfResults = {};
+  let userPrefs = [];
 
   try {
     // Join news_pref and user_pref tables to get a list of news_id's and their associated user_id.
@@ -13,13 +14,23 @@ exports.getNews = async (req, res) => {
     // Two where conditions set in place to filter by user_id and preferences required by the user.
     // Sort by user choice, by default, news article publish date ordered by most recent
     // Pagination is available as well with limit() and offset() methods
+    if (!preferences) {
+      userPrefs = await knex("user_preference")
+      .join("preference", "preference_id", "=", "preference.id")
+      .select("name")
+      .where({ user_id: userId })
+      userPrefs = userPrefs.map((pref) => pref.name)
+    }
+    
+    console.log(userPrefs)
+
     const newsArticles = await knex('newsarticle_preference')
       .join('user_preference', 'newsarticle_preference.preference_id', '=', 'user_preference.preference_id')
       .join('preference', 'preference.id', '=', 'user_preference.preference_id')
       .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
       .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
       .whereIn("user_id", [userId])
-      .whereIn("name", preferences.split(" "))
+      .whereIn("name", preferences.split(" ") || userPrefs)
       .orderBy(sort_by || 'published_at', sort_type || 'desc')
       .limit(num_of_articles || 10)
       .offset(page_number * num_of_articles || 0);
