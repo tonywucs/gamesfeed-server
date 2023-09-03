@@ -26,7 +26,7 @@ exports.getNews = async (req, res) => {
       .join('user_preference', 'newsarticle_preference.preference_id', '=', 'user_preference.preference_id')
       .join('preference', 'preference.id', '=', 'user_preference.preference_id')
       .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
-      .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
+      .select('newsarticle.id as id', 'preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
       .whereIn("user_id", [userId])
       .whereIn("name", preferences ? preferences.split(" ") : userPrefs)
       .orderBy(sort_by || 'published_at', sort_type || 'desc')
@@ -73,7 +73,7 @@ exports.getRecommendNews = async (req, res) => {
       .join('newsarticle', 'recommend.newsarticle_id', '=', 'newsarticle.id')
       .join('newsarticle_preference', 'newsarticle.id', '=', 'newsarticle_preference.newsarticle_id')
       .join('preference', 'preference.id', '=', 'newsarticle_preference.preference_id')
-      .select('newsarticle_preference.preference_id as pref_id', 'preference.name as preference', 'username as friend', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
+      .select('newsarticle.id as id', 'newsarticle_preference.preference_id as pref_id', 'preference.name as preference', 'username as friend', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
       .whereIn('user1_id', [userId])
       .orderBy(sort_by || 'username', sort_type || 'asc');
 
@@ -120,7 +120,7 @@ exports.getUnauthenticatedNews = async (req, res) => {
     const newsArticles = await knex('newsarticle_preference')
       .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
       .join('preference', 'preference.id', '=', 'preference_id')
-      .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
+      .select('newsarticle.id as id', 'preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
       .orderBy(sort_by || 'published_at', sort_type || 'desc')
       .limit(num_of_articles || 10)
       .offset(page_number * num_of_articles || 0);

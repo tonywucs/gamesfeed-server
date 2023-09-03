@@ -9,7 +9,7 @@ const getNewsData = async (pref, pageSize, sortBy) => {
 
     try {
         const { data } = await 
-        axios.get(`${API_URL}?q=${pref}&language=en&pageSize=${pageSize}&sortBy=${sortBy}&apiKey=${API_KEY}`);
+        axios.get(`${API_URL}?q=${pref}&searchIn=title,description&language=en&pageSize=${pageSize}&sortBy=${sortBy}&apiKey=${API_KEY}`);
         
         return data;
     } catch (err) {
