@@ -332,7 +332,7 @@ exports.getFriends = async (req, res) => {
     // Determine the existence of a friend
     const friends = await knex('friend')
       .join('user', 'user2_id', '=', 'user.id')
-      .select('username')
+      .select('username', 'user2_id as id')
       .where({ user1_id: userId })
 
     res
