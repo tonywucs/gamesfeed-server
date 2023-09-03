@@ -16,13 +16,11 @@ exports.getNews = async (req, res) => {
     // Pagination is available as well with limit() and offset() methods
     if (!preferences) {
       userPrefs = await knex("user_preference")
-      .join("preference", "preference_id", "=", "preference.id")
-      .select("name")
-      .where({ user_id: userId })
+        .join("preference", "preference_id", "=", "preference.id")
+        .select("name")
+        .where({ user_id: userId })
       userPrefs = userPrefs.map((pref) => pref.name)
     }
-    
-    console.log(userPrefs)
 
     const newsArticles = await knex('newsarticle_preference')
       .join('user_preference', 'newsarticle_preference.preference_id', '=', 'user_preference.preference_id')
@@ -30,7 +28,7 @@ exports.getNews = async (req, res) => {
       .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
       .select('preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at')
       .whereIn("user_id", [userId])
-      .whereIn("name", preferences.split(" ") || userPrefs)
+      .whereIn("name", preferences ? preferences.split(" ") : userPrefs)
       .orderBy(sort_by || 'published_at', sort_type || 'desc')
       .limit(num_of_articles || 10)
       .offset(page_number * num_of_articles || 0);
@@ -46,12 +44,13 @@ exports.getNews = async (req, res) => {
     res
       .status(200)
       .json({
-        total_results: Object.values(numOfResults).reduce((acc, curr) => acc + curr),
+        total_results: Object.values(numOfResults).reduce((acc, curr) => acc + curr, 0),
         results: numOfResults,
         articles: newsArticles
       });
 
   } catch (err) {
+    console.log(err)
     res
       .status(400)
       .json({
