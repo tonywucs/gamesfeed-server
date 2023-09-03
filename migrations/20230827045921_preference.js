@@ -7,6 +7,7 @@ exports.up = function(knex) {
     .createTable("preference", (table) => {
         table.increments("id").primary();
         table.string("name").notNullable();
+        table.string("company").notNullable();
         table.timestamp("created_at").defaultTo(knex.fn.now());
         table
             .timestamp("updated_at")

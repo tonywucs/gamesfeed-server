@@ -1,6 +1,12 @@
 module.exports = [
-    { username: "user1", password: "password123" },
-    { username: "user2", password: "securepass" },
-    { username: "user3", password: "123456789" },
-    { username: "user4", password: "123" }
-];
+    { username: "alice", password: "password1" },
+    { username: "bob", password: "password2" },
+    { username: "charlie", password: "password3" },
+    { username: "david", password: "password4" },
+    { username: "emma", password: "password5" },
+    { username: "frank", password: "password6" },
+    { username: "grace", password: "password7" },
+    { username: "henry", password: "password8" },
+    { username: "isabella", password: "password9" },
+    { username: "jacob", password: "password10" }
+  ];

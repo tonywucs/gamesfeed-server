@@ -35,7 +35,7 @@ const processNews = (news) => {
 
 const populateNewsPreferences = async (preference, pageSize, sortBy) => {
   try {
-    const news = await newsArticles.getNewsData(preference.name.toLowerCase(), pageSize, sortBy);
+    const news = await newsArticles.getNewsData(`${preference.name.toLowerCase()} ${preference.company.toLowerCase()}`, pageSize, sortBy);
     const count = await knex('newsarticle').count("* as total_count")
     await knex('newsarticle').insert(processNews(news))
     const newsArticleList = await knex('newsarticle').select("id").offset(count[0].total_count || 0)
