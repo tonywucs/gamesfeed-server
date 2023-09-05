@@ -110,6 +110,30 @@ exports.setup = async (req, res) => {
   }
 }
 
+exports.getUser = async (req, res) => {
+  const userId = req.jwtDecoded.id;
+
+  try {
+    const user = await knex('user')
+      .where({ id: userId })
+
+    res
+      .status(200)
+      .json({
+        username: user[0].username,
+        new_user: user[0].new_user
+      });
+
+  } catch (err) {
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: "No such user exists"
+      });
+  }
+}
+
 exports.delUser = async (req, res) => {
   const userId = req.jwtDecoded.id;
 
