@@ -309,8 +309,9 @@ exports.setFriends = async (req, res) => {
   try {
     // Determine the existence of a friend
     const friendId = await knex('user')
-      .select('id')
+      .select("id")
       .where({ username: friendUsername })
+
 
 
     if (friendId.length === 0) {
@@ -322,46 +323,40 @@ exports.setFriends = async (req, res) => {
         });
     }
 
+    if (friendId[0].id === userId) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: 'No user was added'
+        });
+    }
+
     // Determine the if the user already has this friend
     const hasFriend = await knex('friend')
       .where({ user1_id: userId })
+      .andWhere({ user2_id: friendId[0].id })
 
     if (hasFriend.length === 0) {
       await knex('friend')
         .insert({
           user1_id: userId,
-          user2_id: friendId
+          user2_id: friendId[0].id
         })
 
       return res
         .status(200)
         .json({
           success: true,
-          message: 'Friend of was added'
+          message: 'Friend was added'
         });
-    }
-
-    const isFriend = hasFriend.find((friend) => {
-      return friend.user2_id === friendId
-    })
-
-    if (isFriend) {
-      return res.status(400).json({
-        success: false,
-        message: 'Friend already exists'
-      });
-    }
-
-    await knex('friend')
-      .insert([{
-        user1_id: userId,
-        user2_id: friendId[0].id
-      }])
+      }
 
     res
-      .status(200)
+      .status(400)
       .json({
-        friend_username: friendUsername
+        success: false,
+        message: 'Already friends'
       })
 
   } catch (err) {
