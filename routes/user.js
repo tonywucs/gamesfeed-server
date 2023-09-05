@@ -6,6 +6,7 @@ const authorizeMiddleware = require('../middleware/authorize');
 
 router.route('/signup').post(userController.signUp);
 router.route('/login').post(userController.login);
+router.route('/setup').post(authorizeMiddleware.authorize, userController.setup)
 router.route('/').delete(authorizeMiddleware.authorize, userController.delUser)
 router.route('/prefs')
     .get(authorizeMiddleware.authorize, userController.getPref)

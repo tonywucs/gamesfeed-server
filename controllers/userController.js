@@ -27,7 +27,7 @@ exports.signUp = async (req, res) => {
   try {
 
     await knex('user').insert([
-      { username: username, password: password }
+      { username: username, password: password, new_user: true }
     ]);
 
     res
@@ -81,6 +81,32 @@ exports.login = async (req, res) => {
       success: false,
       message: 'Username/password combination is wrong'
     });
+  }
+}
+
+exports.setup = async (req, res) => {
+  const userId = req.jwtDecoded.id;
+  const { new_user } = req.body;
+
+  try {
+    await knex('user')
+      .where({ id: userId })
+      .update({ new_user: (new_user === "true") })
+
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Changed user status"
+      });
+
+  } catch (err) {
+    res
+      .status(400)
+      .json({
+        success: false,
+        message: "Missing new user flag"
+      });
   }
 }
 
@@ -194,10 +220,9 @@ exports.getPref = async (req, res) => {
 
     if (userPrefs.length === 0) {
       return res
-        .status(400)
+        .status(200)
         .json({
-          success: false,
-          message: 'No user preferences were set'
+          preferences: []
         });
     }
 
@@ -227,7 +252,7 @@ exports.getPref = async (req, res) => {
 exports.getAllPref = async (_req, res) => {
   try {
     const preferences = await knex('preference')
-      .select("*")
+      .select("id", "name")
 
     if (preferences.length === 0) {
       return res
@@ -327,13 +352,26 @@ exports.setFriends = async (req, res) => {
 
 exports.getFriends = async (req, res) => {
   const userId = req.jwtDecoded.id;
+  const { random } = req.headers;
+  let nums = {};
+  let randNum = 0;
+
+  if (random) {
+    while (Object.keys(nums).length < 3) {
+      randNum = Math.floor(Math.random() * 9 + 1)
+      nums[`${randNum}`] = true
+    }
+  }
 
   try {
-    // Determine the existence of a friend
-    const friends = await knex('friend')
+    const friends = !random ? await knex('friend')
       .join('user', 'user2_id', '=', 'user.id')
       .select('username', 'user2_id as id')
       .where({ user1_id: userId })
+      :
+      await knex('user')
+        .select('username', 'id')
+        .whereIn('id', Object.keys(nums))
 
     res
       .status(200)
