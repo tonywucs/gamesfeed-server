@@ -1,5 +1,6 @@
 const knex = require('knex')(require('../knexfile'));
 const newsArticles = require('../seed-data/newsarticles');
+const fs = require('fs');
 
 const processNews = (news) => {
   const numOfChars = 200;
@@ -57,11 +58,20 @@ const populateNewsPreferences = async (preference, pageSize, sortBy) => {
 exports.seed = async function (knex) {
   await knex('newsarticle').del();
 
-  const pageSize = 50;
-  const sortBy = 'relevancy';
-  const preferenceOptions = await knex('preference').select("*");
+  // const pageSize = 50;
+  // const sortBy = 'relevancy';
+  // const preferenceOptions = await knex('preference').select("*");
 
-  for (const pref of preferenceOptions) {
-    await populateNewsPreferences(pref, pageSize, sortBy)
-  }
+  // for (const pref of preferenceOptions) {
+  //   await populateNewsPreferences(pref, pageSize, sortBy)
+  // }
+
+  const path = './newsarticles.json';
+  // const data = await knex('newsarticle')
+  // .select('title', 'author', 'source', 'description', 'read_time', 'url', 'url_to_image', 'published_at')
+  // fs.writeFileSync(path, JSON.stringify(data))
+
+  const data = JSON.parse(fs.readFileSync(path));
+  await knex('newsarticle').insert(data);
+
 };
