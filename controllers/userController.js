@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
       loginTime: Date.now()
     },
       process.env.JWT_SECRET,
-      { expiresIn: '20m' }
+      { expiresIn: '1h' }
     );
 
     res.status(200).json({ token });
@@ -380,7 +380,7 @@ exports.getFriends = async (req, res) => {
   let randNum = 0;
 
   if (random) {
-    while (Object.keys(nums).length < 3) {
+    while (Object.keys(nums).length < 6) {
       randNum = Math.floor(Math.random() * 9 + 1)
       nums[`${randNum}`] = true
     }
