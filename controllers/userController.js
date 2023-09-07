@@ -210,11 +210,15 @@ exports.setPref = async (req, res) => {
           }
         }));
 
+      const updatedPrefs = await knex("user_preference")
+      .join("preference", "preference_id", "=", "preference.id")
+      .select("preference_id", "name")
+      .where({ user_id: userId })
+
       return res
         .status(200)
         .json({
-          success: true,
-          message: 'User preferences updated'
+          preferences: updatedPrefs.map((pref) => pref.name)
         });
     }
 
