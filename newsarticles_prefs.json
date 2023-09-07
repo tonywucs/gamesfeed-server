@@ -1,0 +1,1706 @@
+[
+    {
+        "newsarticle_id": 1,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 2,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 3,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 4,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 5,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 6,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 7,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 8,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 9,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 10,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 11,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 12,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 13,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 14,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 15,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 16,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 17,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 18,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 19,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 20,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 21,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 22,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 23,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 24,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 25,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 26,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 27,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 28,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 29,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 30,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 31,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 32,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 33,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 34,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 35,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 36,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 37,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 38,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 39,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 40,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 41,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 42,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 43,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 44,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 45,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 46,
+        "preference_id": 1
+    },
+    {
+        "newsarticle_id": 47,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 48,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 49,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 50,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 51,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 52,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 53,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 54,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 55,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 56,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 57,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 58,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 59,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 60,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 61,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 62,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 63,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 64,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 65,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 66,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 67,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 68,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 69,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 70,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 71,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 72,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 73,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 74,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 75,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 76,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 77,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 78,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 79,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 80,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 81,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 82,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 83,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 84,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 85,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 86,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 87,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 88,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 89,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 90,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 91,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 92,
+        "preference_id": 2
+    },
+    {
+        "newsarticle_id": 93,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 94,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 95,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 96,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 97,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 98,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 99,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 100,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 101,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 102,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 103,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 104,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 105,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 106,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 107,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 108,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 109,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 110,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 111,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 112,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 113,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 114,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 115,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 116,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 117,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 118,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 119,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 120,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 121,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 122,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 123,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 124,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 125,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 126,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 127,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 128,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 129,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 130,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 131,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 132,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 133,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 134,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 135,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 136,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 137,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 138,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 139,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 140,
+        "preference_id": 3
+    },
+    {
+        "newsarticle_id": 141,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 142,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 143,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 144,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 145,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 146,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 147,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 148,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 149,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 150,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 151,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 152,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 153,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 154,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 155,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 156,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 157,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 158,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 159,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 160,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 161,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 162,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 163,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 164,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 165,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 166,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 167,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 168,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 169,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 170,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 171,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 172,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 173,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 174,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 175,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 176,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 177,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 178,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 179,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 180,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 181,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 182,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 183,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 184,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 185,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 186,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 187,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 188,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 189,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 190,
+        "preference_id": 4
+    },
+    {
+        "newsarticle_id": 191,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 192,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 193,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 194,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 195,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 196,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 197,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 198,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 199,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 200,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 201,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 202,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 203,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 204,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 205,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 206,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 207,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 208,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 209,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 210,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 211,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 212,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 213,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 214,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 215,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 216,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 217,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 218,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 219,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 220,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 221,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 222,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 223,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 224,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 225,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 226,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 227,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 228,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 229,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 230,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 231,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 232,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 233,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 234,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 235,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 236,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 237,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 238,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 239,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 240,
+        "preference_id": 5
+    },
+    {
+        "newsarticle_id": 241,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 242,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 243,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 244,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 245,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 246,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 247,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 248,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 249,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 250,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 251,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 252,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 253,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 254,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 255,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 256,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 257,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 258,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 259,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 260,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 261,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 262,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 263,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 264,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 265,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 266,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 267,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 268,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 269,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 270,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 271,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 272,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 273,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 274,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 275,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 276,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 277,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 278,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 279,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 280,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 281,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 282,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 283,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 284,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 285,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 286,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 287,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 288,
+        "preference_id": 6
+    },
+    {
+        "newsarticle_id": 289,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 290,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 291,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 292,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 293,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 294,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 295,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 296,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 297,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 298,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 299,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 300,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 301,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 302,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 303,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 304,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 305,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 306,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 307,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 308,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 309,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 310,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 311,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 312,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 313,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 314,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 315,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 316,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 317,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 318,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 319,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 320,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 321,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 322,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 323,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 324,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 325,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 326,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 327,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 328,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 329,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 330,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 331,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 332,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 333,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 334,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 335,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 336,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 337,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 338,
+        "preference_id": 7
+    },
+    {
+        "newsarticle_id": 339,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 340,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 341,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 342,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 343,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 344,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 345,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 346,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 347,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 348,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 349,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 350,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 351,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 352,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 353,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 354,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 355,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 356,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 357,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 358,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 359,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 360,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 361,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 362,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 363,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 364,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 365,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 366,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 367,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 368,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 369,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 370,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 371,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 372,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 373,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 374,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 375,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 376,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 377,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 378,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 379,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 380,
+        "preference_id": 8
+    },
+    {
+        "newsarticle_id": 381,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 382,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 383,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 384,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 385,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 386,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 387,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 388,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 389,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 390,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 391,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 392,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 393,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 394,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 395,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 396,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 397,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 398,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 399,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 400,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 401,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 402,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 403,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 404,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 405,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 406,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 407,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 408,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 409,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 410,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 411,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 412,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 413,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 414,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 415,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 416,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 417,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 418,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 419,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 420,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 421,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 422,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 423,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 424,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 425,
+        "preference_id": 9
+    },
+    {
+        "newsarticle_id": 426,
+        "preference_id": 9
+    }
+]

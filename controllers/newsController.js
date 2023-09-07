@@ -28,7 +28,7 @@ exports.getNews = async (req, res) => {
       .join('newsarticle', 'newsarticle.id', '=', 'newsarticle_id')
       .select('newsarticle.id as id', 'preference.id as pref_id', 'name as preference', 'title', 'author', 'source', 'description', 'url', 'url_to_image', 'published_at', 'read_time')
       .whereIn("user_id", [userId])
-      .whereIn("name", preferences ? preferences.split(" ") : userPrefs)
+      .whereIn("name", preferences ? preferences.split(",") : userPrefs)
       .orderBy(sort_by || 'published_at', sort_type || 'desc')
       .limit(num_of_articles || 10)
       .offset(page_number * num_of_articles || 0);

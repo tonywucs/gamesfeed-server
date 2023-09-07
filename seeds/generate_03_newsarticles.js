@@ -66,12 +66,18 @@ exports.seed = async function (knex) {
   //   await populateNewsPreferences(pref, pageSize, sortBy)
   // }
 
-  const path = './newsarticles.json';
-  // const data = await knex('newsarticle')
+  const newsArticlesPath = './newsarticles.json';
+  const newsPrefsPath = './newsarticles_prefs.json';
+  // const newsArticlesData = await knex('newsarticle')
   // .select('title', 'author', 'source', 'description', 'read_time', 'url', 'url_to_image', 'published_at')
-  // fs.writeFileSync(path, JSON.stringify(data))
+  // fs.writeFileSync(newsArticlesPath, JSON.stringify(newsArticlesData))
+  // const newsPrefsData = await knex('newsarticle_preference')
+  // .select('newsarticle_id', 'preference_id')
+  // fs.writeFileSync(newsPrefsPath, JSON.stringify(newsPrefsData))
 
-  const data = JSON.parse(fs.readFileSync(path));
-  await knex('newsarticle').insert(data);
+  const newsArticlesData = JSON.parse(fs.readFileSync(newsArticlesPath));
+  await knex('newsarticle').insert(newsArticlesData);
+  const newsPrefsData = JSON.parse(fs.readFileSync(newsPrefsPath));
+  await knex('newsarticle_preference').insert(newsPrefsData);
 
 };
